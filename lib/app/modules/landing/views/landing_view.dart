@@ -4,6 +4,7 @@ import 'package:ev_way/app/modules/evacuation/views/evacuation_view.dart';
 import 'package:ev_way/app/modules/home/views/home_view.dart';
 import 'package:ev_way/app/modules/profile/views/profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 
@@ -25,70 +26,80 @@ class LandingView extends GetView<LandingController> {
         child: SizedBox(
           height: 80,
           child: BottomNavigationBar(
-            showUnselectedLabels: true,
-            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            showSelectedLabels: false,
             onTap: controller.changeTabIndex,
             currentIndex: controller.tabIndex.value,
-            backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
-            unselectedItemColor: Colors.white.withOpacity(0.5),
-            selectedItemColor: Colors.white,
+            backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+            unselectedItemColor: Color(0xFFA0B0CF),
             unselectedLabelStyle: unselectedLabelStyle,
             selectedLabelStyle: selectedLabelStyle,
             items: [
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
-                    Icons.home,
-                    size: 20.0,
+                  icon: SvgPicture.asset(
+                    'assets/icons/home_inactive.svg',
+                    height: 20,
                   ),
+                  activeIcon: SvgPicture.asset(
+                    'assets/icons/home_active.svg',
+                    height: 20,
+                  ),
+                  label: 'Home',
+                  backgroundColor: Colors.white),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/icons/disaster_inactive.svg',
+                  height: 20,
                 ),
-                label: 'Home',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                activeIcon: SvgPicture.asset(
+                  'assets/icons/disaster_active.svg',
+                  height: 20,
+                ),
+                label: 'Disaster',
+                backgroundColor: Colors.white,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
-                    Icons.search,
-                    size: 20.0,
-                  ),
+                icon: SvgPicture.asset(
+                  'assets/icons/evacuation_inactive.svg',
+                  height: 20,
                 ),
-                label: 'Explore',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                activeIcon: SvgPicture.asset(
+                  'assets/icons/evacuation_active.svg',
+                  height: 20,
+                ),
+                label: 'Evacuation',
+                backgroundColor: Colors.white,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
-                    Icons.location_history,
-                    size: 20.0,
-                  ),
+                icon: Icon(
+                  Icons.info_outline_rounded,
+                  size: 20.0,
                 ),
-                label: 'Places',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
-              ),
-              BottomNavigationBarItem(
-                icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
+                activeIcon: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xFF22BBC5),
+                    shape: BoxShape.circle,
+                  ),
                   child: Icon(
-                    Icons.warning_amber_rounded,
+                    Icons.info_outline_rounded,
                     size: 20.0,
+                    color: Color.fromARGB(255, 39, 147, 154),
                   ),
                 ),
                 label: 'About',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: Colors.white,
               ),
               BottomNavigationBarItem(
-                icon: Container(
-                  margin: EdgeInsets.only(bottom: 7),
-                  child: Icon(
-                    Icons.person_outline,
-                    size: 20.0,
-                  ),
+                icon: SvgPicture.asset(
+                  'assets/icons/person_inactive.svg',
+                  height: 20,
+                ),
+                activeIcon: SvgPicture.asset(
+                  'assets/icons/person_active.svg',
+                  height: 20,
                 ),
                 label: 'Profile',
-                backgroundColor: Color.fromRGBO(36, 54, 101, 1.0),
+                backgroundColor: Colors.white,
               ),
             ],
           ),

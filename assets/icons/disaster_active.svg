@@ -1,0 +1,13 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.73026 19.6998C8.55026 18.8198 9.80023 18.8898 10.5202 19.8498L11.5302 21.1998C12.3402 22.2698 13.6502 22.2698 14.4602 21.1998L15.4702 19.8498C16.1902 18.8898 17.4403 18.8198 18.2603 19.6998C20.0403 21.5998 21.4902 20.9698 21.4902 18.3098V7.04974C21.4902 3.01974 20.5502 2.00977 16.7702 2.00977H9.21024C5.43024 2.00977 4.49023 3.01974 4.49023 7.04974V18.3098C4.50023 20.9698 5.96026 21.5898 7.73026 19.6998Z" fill="#22BBC5"/>
+<path d="M18.2 21.4C19.9673 21.4 21.4 19.9673 21.4 18.2C21.4 16.4327 19.9673 15 18.2 15C16.4327 15 15 16.4327 15 18.2C15 19.9673 16.4327 21.4 18.2 21.4Z" stroke="#22BBC5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.2 21.4C19.9673 21.4 21.4 19.9673 21.4 18.2C21.4 16.4327 19.9673 15 18.2 15C16.4327 15 15 16.4327 15 18.2C15 19.9673 16.4327 21.4 18.2 21.4Z" stroke="black" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 22L21 21" stroke="#22BBC5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 22L21 21" stroke="black" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8 7H16" stroke="#22BBC5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8 7H16" stroke="black" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 11H15" stroke="#22BBC5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 11H15" stroke="black" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 11.3V7.04001C21 3.01001 20.06 2 16.28 2H8.72C4.94 2 4 3.01001 4 7.04001V18.3C4 20.96 5.46001 21.59 7.23001 19.69L7.23999 19.68C8.05999 18.81 9.30999 18.88 10.02 19.83L11.03 21.18" stroke="#22BBC5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21 11.3V7.04001C21 3.01001 20.06 2 16.28 2H8.72C4.94 2 4 3.01001 4 7.04001V18.3C4 20.96 5.46001 21.59 7.23001 19.69L7.23999 19.68C8.05999 18.81 9.30999 18.88 10.02 19.83L11.03 21.18" stroke="black" stroke-opacity="0.2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

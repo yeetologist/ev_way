@@ -66,11 +66,7 @@ class WeatherCard extends StatelessWidget {
                     const Spacer(),
                     Row(
                       children: [
-                        const Icon(
-                          Icons.wb_sunny,
-                          color: Colors.amber,
-                          size: 32,
-                        ),
+                        _getWeatherIcon(controller.weatherIcon.value),
                         const SizedBox(width: 4),
                         Text(
                           '${controller.currentTemp.value}°',
@@ -93,6 +89,51 @@ class WeatherCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _getWeatherIcon(String iconType) {
+    IconData iconData;
+    Color iconColor;
+
+    switch (iconType) {
+      case 'clear_day':
+        iconData = Icons.wb_sunny;
+        iconColor = Colors.amber;
+        break;
+      case 'clear_night':
+        iconData = Icons.nightlight_round;
+        iconColor = Colors.indigo;
+        break;
+      case 'cloudy':
+        iconData = Icons.cloud;
+        iconColor = Colors.grey;
+        break;
+      case 'rainy':
+        iconData = Icons.grain;
+        iconColor = Colors.blue;
+        break;
+      case 'thunderstorm':
+        iconData = Icons.flash_on;
+        iconColor = Colors.amber;
+        break;
+      case 'snowy':
+        iconData = Icons.ac_unit;
+        iconColor = Colors.lightBlue;
+        break;
+      case 'foggy':
+        iconData = Icons.cloud;
+        iconColor = Colors.blueGrey;
+        break;
+      default:
+        iconData = Icons.wb_sunny;
+        iconColor = Colors.amber;
+    }
+
+    return Icon(
+      iconData,
+      color: iconColor,
+      size: 32,
     );
   }
 

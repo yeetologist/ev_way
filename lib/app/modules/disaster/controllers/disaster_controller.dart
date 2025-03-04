@@ -119,7 +119,6 @@ class DisasterController extends GetxController {
         windSpeed.value = currentWeather.windSpeed.round();
         weatherDescription.value = currentWeather.description;
         weatherIcon.value = _getWeatherIcon(currentWeather.icon);
-        // print(currentWeather.toString());
 
         // // Now get forecast for this location
         // final List<ForecastDay>? forecast = await _weatherService
