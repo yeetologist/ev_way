@@ -1,6 +1,7 @@
 import 'package:ev_way/app/modules/disaster/views/widgets/disaster_card_stat.dart';
 import 'package:ev_way/app/modules/disaster/views/widgets/preparation_card.dart';
 import 'package:ev_way/app/modules/disaster/views/widgets/weather_card.dart';
+import 'package:ev_way/app/modules/welcome/views/widgets/concentric_circles_background.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -12,52 +13,103 @@ class DisasterView extends GetView<DisasterController> {
   const DisasterView({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Sigap Bencana',
-          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+    return Stack(
+      children: [
+        Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: const Color(0xFFF15A38),
         ),
-        actions: [
-          LocationButton(),
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: () {
-              if (controller.isUsingCurrentLocation.value) {
-                controller.fetchWeatherByLocation();
-              } else {
-                controller.fetchWeatherData(controller.currentCity.value);
-              }
-            },
+        Positioned(
+          left: -70, // Move left to create partial circle
+          top: 70, // Move up to create partial circle
+          child: CustomPaint(
+            painter: ConcentricCirclesPainter(
+              primaryColor: const Color(0xFFF15A38),
+              secondaryColor: const Color(0xFFF47857),
+              circleCount: 6,
+              maxRadiusRatio: 0.8,
+            ),
+            child: SizedBox(width: 200, height: 200),
           ),
-        ],
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Weather and total disasters section
-              _buildTopSection(),
-              const SizedBox(height: 20),
-
-              // Disaster types grid
-              _buildDisasterGrid(),
-              const SizedBox(height: 24),
-
-              // Disaster preparation section
-              _buildPreparationSection(),
+        ),
+        Positioned(
+          right: -70, // Move left to create partial circle
+          top: -50, // Move up to create partial circle
+          child: CustomPaint(
+            painter: ConcentricCirclesPainter(
+              primaryColor: const Color(0xFFF15A38),
+              secondaryColor: const Color(0xFFF47857),
+              circleCount: 6,
+              maxRadiusRatio: 0.8,
+            ),
+            child: SizedBox(width: 200, height: 200),
+          ),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Sigap Bencana',
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+            ),
+            actions: [
+              LocationButton(),
+              IconButton(
+                icon: const Icon(Icons.refresh),
+                onPressed: () {
+                  if (controller.isUsingCurrentLocation.value) {
+                    controller.fetchWeatherByLocation();
+                  } else {
+                    controller.fetchWeatherData(controller.currentCity.value);
+                  }
+                },
+              ),
             ],
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            elevation: 0, // Remove AppBar shadow
+          ),
+          backgroundColor: Colors.transparent,
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Weather and total disasters section
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: _buildTopSection(context),
+                ),
+                const SizedBox(height: 20),
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(24),
+                        topRight: Radius.circular(24)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      children: [
+                        // Disaster types grid
+                        _buildDisasterGrid(),
+                        const SizedBox(height: 24),
+
+                        // Disaster preparation section
+                        _buildPreparationSection(),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 
-  Widget _buildTopSection() {
+  Widget _buildTopSection(BuildContext context) {
     return Row(
       children: [
         // Total disasters card
@@ -66,7 +118,7 @@ class DisasterView extends GetView<DisasterController> {
           child: Container(
             height: 150,
             decoration: BoxDecoration(
-              color: const Color(0xFFF76C5E),
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Padding(
@@ -74,18 +126,18 @@ class DisasterView extends GetView<DisasterController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Total Bencana',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 16,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Obx(() => Text(
                         '${controller.totalDisasters.value}',
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
                           fontSize: 38,
                           fontWeight: FontWeight.bold,
                         ),

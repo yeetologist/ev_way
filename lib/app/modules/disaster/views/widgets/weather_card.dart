@@ -155,7 +155,7 @@ class WeatherCard extends StatelessWidget {
           controller.getWeatherIconFromBmkg(forecast, size: 14.0),
           const SizedBox(height: 2),
           Text(
-            "${forecast.t.round().toString()}°C",
+            "${forecast.t.round().toString()}°",
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
