@@ -37,10 +37,7 @@ class DisasterStatCard extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey[600],
-              ),
+              style: Theme.of(context).textTheme.bodyLarge,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
@@ -55,11 +52,11 @@ class DisasterStatCard extends StatelessWidget {
                 const SizedBox(width: 4),
                 Obx(() => Text(
                       '${count.value}',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: color,
-                      ),
+                      style:
+                          Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                color: color,
+                                fontWeight: FontWeight.bold,
+                              ),
                     )),
               ],
             ),

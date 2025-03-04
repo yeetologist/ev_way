@@ -11,7 +11,8 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF15A38), // Orange background
+      backgroundColor:
+          Theme.of(context).colorScheme.primary, // Orange background
       body: Stack(
         children: [
           ConcentricCirclesBackground(),
@@ -43,28 +44,28 @@ class RegisterView extends GetView<RegisterController> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           // Register Title
-                          const Text(
+                          Text(
                             'Daftar',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFFF15A38),
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                           const SizedBox(height: 8),
 
                           // Subtitle
-                          const Text(
+                          Text(
                             'Buat akun baru untuk menggunakan aplikasi',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           const SizedBox(height: 24),
 
                           // Username Field
                           _buildInputField(
+                            context,
                             label: 'Username',
                             hint: 'Masukkan username',
                             controller: controller.usernameController,
@@ -73,6 +74,7 @@ class RegisterView extends GetView<RegisterController> {
 
                           // Phone Field
                           _buildInputField(
+                            context,
                             label: 'Nomor Telepon',
                             hint: 'Masukkan nomor telepon',
                             controller: controller.phoneController,
@@ -82,6 +84,7 @@ class RegisterView extends GetView<RegisterController> {
 
                           // Email Field
                           _buildInputField(
+                            context,
                             label: 'Email',
                             hint: 'Masukkan email',
                             controller: controller.emailController,
@@ -91,6 +94,7 @@ class RegisterView extends GetView<RegisterController> {
 
                           // Password Field
                           _buildPasswordField(
+                            context,
                             label: 'Password',
                             hint: 'Masukkan password',
                             controller: controller.passwordController,
@@ -102,6 +106,7 @@ class RegisterView extends GetView<RegisterController> {
 
                           // Confirm Password Field
                           _buildPasswordField(
+                            context,
                             label: 'Konfirmasi Password',
                             hint: 'Masukkan ulang password',
                             controller: controller.confirmPasswordController,
@@ -119,20 +124,27 @@ class RegisterView extends GetView<RegisterController> {
                                   value: controller.agreeToTerms.value,
                                   onChanged: (value) =>
                                       controller.toggleAgreeToTerms(),
-                                  activeColor: const Color(0xFF26BDB9),
+                                  activeColor:
+                                      Theme.of(context).colorScheme.tertiary,
                                 ),
                               ),
                               Expanded(
                                 child: RichText(
                                   text: TextSpan(
                                     text: 'Saya setuju dengan ',
-                                    style: const TextStyle(
-                                        color: Colors.grey, fontSize: 12),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(
+                                          color: Colors.grey,
+                                        ),
                                     children: [
                                       TextSpan(
                                         text: 'Syarat dan Ketentuan',
-                                        style: const TextStyle(
-                                          color: Color(0xFF26BDB9),
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .tertiary,
                                           fontWeight: FontWeight.bold,
                                         ),
                                         // You can add a gesture recognizer here if needed
@@ -155,7 +167,8 @@ class RegisterView extends GetView<RegisterController> {
                                     ? null
                                     : controller.register,
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFF26BDB9),
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.tertiary,
                                   foregroundColor: Colors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30),
@@ -163,9 +176,10 @@ class RegisterView extends GetView<RegisterController> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 16),
                                   elevation: 0,
-                                  disabledBackgroundColor:
-                                      const Color(0xFF26BDB9)
-                                          .withValues(alpha: 0.6),
+                                  disabledBackgroundColor: Theme.of(context)
+                                      .colorScheme
+                                      .tertiary
+                                      .withValues(alpha: 0.6),
                                 ),
                                 child: controller.isLoading.value
                                     ? const SizedBox(
@@ -176,12 +190,17 @@ class RegisterView extends GetView<RegisterController> {
                                           strokeWidth: 2,
                                         ),
                                       )
-                                    : const Text(
+                                    : Text(
                                         'Daftar',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge!
+                                            .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onPrimary,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                       ),
                               ),
                             ),
@@ -193,22 +212,28 @@ class RegisterView extends GetView<RegisterController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
+                                Text(
                                   'Sudah punya akun? ',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.grey,
+                                      ),
                                 ),
                                 GestureDetector(
                                   onTap: controller.navigateToLogin,
-                                  child: const Text(
+                                  child: Text(
                                     'Masuk',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Color(0xFF26BDB9),
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .tertiary,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                   ),
                                 ),
                               ],
@@ -228,7 +253,8 @@ class RegisterView extends GetView<RegisterController> {
   }
 
   // Helper method to build text input fields
-  Widget _buildInputField({
+  Widget _buildInputField(
+    BuildContext context, {
     required String label,
     required String hint,
     required TextEditingController controller,
@@ -239,10 +265,9 @@ class RegisterView extends GetView<RegisterController> {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Color(0xFFF15A38),
-          ),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
         ),
         const SizedBox(height: 8),
         TextField(
@@ -250,10 +275,9 @@ class RegisterView extends GetView<RegisterController> {
           keyboardType: keyboardType,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(
-              color: Colors.grey.withValues(alpha: 0.5),
-              fontSize: 14,
-            ),
+            hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: Colors.grey.withValues(alpha: 0.5),
+                ),
             filled: true,
             fillColor: Colors.grey.withValues(alpha: 0.05),
             contentPadding: const EdgeInsets.symmetric(
@@ -271,7 +295,10 @@ class RegisterView extends GetView<RegisterController> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
-                color: const Color(0xFFF15A38).withValues(alpha: 0.3),
+                color: Theme.of(context)
+                    .colorScheme
+                    .primary
+                    .withValues(alpha: 0.3),
               ),
             ),
           ),
@@ -281,7 +308,8 @@ class RegisterView extends GetView<RegisterController> {
   }
 
   // Helper method to build password input fields
-  Widget _buildPasswordField({
+  Widget _buildPasswordField(
+    BuildContext context, {
     required String label,
     required String hint,
     required TextEditingController controller,
@@ -293,10 +321,9 @@ class RegisterView extends GetView<RegisterController> {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Color(0xFFF15A38),
-          ),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+              ),
         ),
         const SizedBox(height: 8),
         Obx(
@@ -305,10 +332,9 @@ class RegisterView extends GetView<RegisterController> {
             obscureText: !isVisible.value,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: TextStyle(
-                color: Colors.grey.withValues(alpha: 0.5),
-                fontSize: 14,
-              ),
+              hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Colors.grey.withValues(alpha: 0.5),
+                  ),
               filled: true,
               fillColor: Colors.grey.withValues(alpha: 0.05),
               contentPadding: const EdgeInsets.symmetric(
@@ -326,7 +352,10 @@ class RegisterView extends GetView<RegisterController> {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(
-                  color: const Color(0xFFF15A38).withValues(alpha: 0.3),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.3),
                 ),
               ),
               suffixIcon: IconButton(

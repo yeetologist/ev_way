@@ -30,10 +30,7 @@ class WeatherCard extends StatelessWidget {
           children: [
             Text(
               'Cuaca',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[600],
-              ),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
             Obx(() => Row(
                   children: [
@@ -42,24 +39,18 @@ class WeatherCard extends StatelessWidget {
                       children: [
                         Text(
                           'Saat ini',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                         Text(
                           controller.currentCity.value,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                         Text(
                           'Angin ${controller.windSpeed.value} m/s',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey[600],
-                          ),
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
                     ),
@@ -70,11 +61,12 @@ class WeatherCard extends StatelessWidget {
                         const SizedBox(width: 4),
                         Text(
                           '${controller.currentTemp.value}°',
-                          style: const TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF475569),
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineLarge!
+                              .copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ],
                     ),
@@ -83,8 +75,8 @@ class WeatherCard extends StatelessWidget {
             const SizedBox(height: 8),
             Obx(() => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children:
-                      List.generate(3, (index) => _buildForecastDay(index)),
+                  children: List.generate(
+                      3, (index) => _buildForecastDay(index, context)),
                 )),
           ],
         ),
@@ -137,7 +129,7 @@ class WeatherCard extends StatelessWidget {
     );
   }
 
-  Widget _buildForecastDay(int index) {
+  Widget _buildForecastDay(int index, BuildContext context) {
     if (controller.forecastItems.isNotEmpty &&
         index < controller.forecastItems.length) {
       final forecast = controller.forecastItems[index];
@@ -146,20 +138,14 @@ class WeatherCard extends StatelessWidget {
         children: [
           Text(
             controller.forecastDays[index],
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey[600],
-            ),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           const SizedBox(height: 2),
           controller.getWeatherIconFromBmkg(forecast, size: 14.0),
           const SizedBox(height: 2),
           Text(
             "${forecast.t.round().toString()}°",
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       );
@@ -168,10 +154,7 @@ class WeatherCard extends StatelessWidget {
         children: [
           Text(
             controller.forecastDays[index],
-            style: TextStyle(
-              fontSize: 12,
-              color: Colors.grey[600],
-            ),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           const SizedBox(height: 2),
           const Icon(
@@ -182,10 +165,7 @@ class WeatherCard extends StatelessWidget {
           const SizedBox(height: 2),
           Text(
             '${controller.forecastTemps[index]}°C',
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(context).textTheme.bodySmall,
           ),
         ],
       );

@@ -10,14 +10,14 @@ class ConcentricCirclesBackground extends StatelessWidget {
     return // Background with concentric circles
         Container(
       decoration: BoxDecoration(
-        color: const Color(0xFFF15A38),
+        color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(24),
       ),
       child: CustomPaint(
         size: const Size(double.infinity, double.infinity),
         painter: ConcentricCirclesPainter(
-          primaryColor: const Color(0xFFF15A38),
-          secondaryColor: const Color(0xFFF47857),
+          primaryColor: Theme.of(context).colorScheme.primary,
+          secondaryColor: Theme.of(context).colorScheme.secondary,
         ),
       ),
     );

@@ -18,15 +18,15 @@ class DisasterView extends GetView<DisasterController> {
         Container(
           height: double.infinity,
           width: double.infinity,
-          color: const Color(0xFFF15A38),
+          color: Theme.of(context).colorScheme.primary,
         ),
         Positioned(
           left: -70, // Move left to create partial circle
           top: 70, // Move up to create partial circle
           child: CustomPaint(
             painter: ConcentricCirclesPainter(
-              primaryColor: const Color(0xFFF15A38),
-              secondaryColor: const Color(0xFFF47857),
+              primaryColor: Theme.of(context).colorScheme.primary,
+              secondaryColor: Theme.of(context).colorScheme.secondary,
               circleCount: 6,
               maxRadiusRatio: 0.8,
             ),
@@ -38,8 +38,8 @@ class DisasterView extends GetView<DisasterController> {
           top: -50, // Move up to create partial circle
           child: CustomPaint(
             painter: ConcentricCirclesPainter(
-              primaryColor: const Color(0xFFF15A38),
-              secondaryColor: const Color(0xFFF47857),
+              primaryColor: Theme.of(context).colorScheme.primary,
+              secondaryColor: Theme.of(context).colorScheme.secondary,
               circleCount: 6,
               maxRadiusRatio: 0.8,
             ),
@@ -92,11 +92,11 @@ class DisasterView extends GetView<DisasterController> {
                     child: Column(
                       children: [
                         // Disaster types grid
-                        _buildDisasterGrid(),
+                        _buildDisasterGrid(context),
                         const SizedBox(height: 24),
 
                         // Disaster preparation section
-                        _buildPreparationSection(),
+                        _buildPreparationSection(context),
                       ],
                     ),
                   ),
@@ -128,19 +128,18 @@ class DisasterView extends GetView<DisasterController> {
                 children: [
                   Text(
                     'Total Bencana',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: 16,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                   ),
                   const SizedBox(height: 8),
                   Obx(() => Text(
                         '${controller.totalDisasters.value}',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: 38,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
                       )),
                 ],
               ),
@@ -158,7 +157,7 @@ class DisasterView extends GetView<DisasterController> {
     );
   }
 
-  Widget _buildDisasterGrid() {
+  Widget _buildDisasterGrid(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
       crossAxisSpacing: 10,
@@ -170,53 +169,52 @@ class DisasterView extends GetView<DisasterController> {
           title: 'Gempa',
           count: controller.earthquakes,
           icon: Icons.location_on,
-          color: const Color(0xFFEA9854),
+          color: Theme.of(context).colorScheme.primary,
         ),
         DisasterStatCard(
           title: 'Banjir',
           count: controller.floods,
           icon: Icons.water,
-          color: const Color(0xFFEA9854),
+          color: Theme.of(context).colorScheme.primary,
         ),
         DisasterStatCard(
           title: 'Tanah Longsor',
           count: controller.landslides,
           icon: Icons.terrain,
-          color: const Color(0xFFEA9854),
+          color: Theme.of(context).colorScheme.primary,
         ),
         DisasterStatCard(
           title: 'Erupsi Gunung Api',
           count: controller.volcanicEruptions,
           icon: Icons.landscape,
-          color: const Color(0xFFEA9854),
+          color: Theme.of(context).colorScheme.primary,
         ),
         DisasterStatCard(
           title: 'Cuaca Ekstrim',
           count: controller.extremeWeather,
           icon: Icons.thunderstorm,
-          color: const Color(0xFFEA9854),
+          color: Theme.of(context).colorScheme.primary,
         ),
         DisasterStatCard(
           title: 'Tsunami',
           count: controller.tsunamis,
           icon: Icons.waves,
-          color: const Color(0xFFEA9854),
+          color: Theme.of(context).colorScheme.primary,
         ),
       ],
     );
   }
 
-  Widget _buildPreparationSection() {
+  Widget _buildPreparationSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Persiapan Bencana',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFF76C5E),
-          ),
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold,
+              ),
         ),
         const SizedBox(height: 16),
         PreparationCard(

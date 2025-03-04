@@ -11,14 +11,7 @@ import 'package:get/get.dart';
 import '../controllers/landing_controller.dart';
 
 class LandingView extends GetView<LandingController> {
-  LandingView({super.key});
-  final TextStyle unselectedLabelStyle = TextStyle(
-      color: Colors.white.withValues(alpha: 0.5),
-      fontWeight: FontWeight.w500,
-      fontSize: 12);
-
-  final TextStyle selectedLabelStyle =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12);
+  const LandingView({super.key});
 
   buildBottomNavigationMenu(context) {
     return Obx(() => MediaQuery(
@@ -32,8 +25,6 @@ class LandingView extends GetView<LandingController> {
             currentIndex: controller.tabIndex.value,
             backgroundColor: Color.fromRGBO(255, 255, 255, 1),
             unselectedItemColor: Color(0xFFA0B0CF),
-            unselectedLabelStyle: unselectedLabelStyle,
-            selectedLabelStyle: selectedLabelStyle,
             items: [
               BottomNavigationBarItem(
                   icon: SvgPicture.asset(
@@ -77,7 +68,7 @@ class LandingView extends GetView<LandingController> {
                 ),
                 activeIcon: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFF22BBC5),
+                    color: Theme.of(context).colorScheme.tertiary,
                     shape: BoxShape.circle,
                   ),
                   child: Icon(

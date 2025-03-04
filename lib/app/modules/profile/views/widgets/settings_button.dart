@@ -6,7 +6,6 @@ class SettingsButton extends StatelessWidget {
   final Color iconColor;
   final VoidCallback onTap;
   final Color backgroundColor;
-  final bool hasBorder;
 
   const SettingsButton({
     super.key,
@@ -15,7 +14,6 @@ class SettingsButton extends StatelessWidget {
     this.iconColor = const Color(0xFF2DC4BF), // Teal color for icon
     required this.onTap,
     this.backgroundColor = const Color(0xFFFFF5F5), // Light pink background
-    this.hasBorder = false,
   });
 
   @override
@@ -24,7 +22,6 @@ class SettingsButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(8.0),
-        border: hasBorder ? Border.all(color: Colors.blue, width: 1.0) : null,
       ),
       child: Material(
         color: Colors.transparent,
@@ -43,15 +40,8 @@ class SettingsButton extends StatelessWidget {
                 ),
                 const SizedBox(width: 16.0),
                 Expanded(
-                  child: Text(
-                    text,
-                    style: TextStyle(
-                      fontSize:
-                          Theme.of(context).textTheme.titleMedium!.fontSize,
-                      color: Color(0xFF667085), // Slate gray color
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+                  child: Text(text,
+                      style: Theme.of(context).textTheme.titleMedium),
                 ),
                 Icon(
                   Icons.chevron_right,

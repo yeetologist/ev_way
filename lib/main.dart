@@ -28,6 +28,8 @@ Future<void> main() async {
         colorScheme: ColorScheme.fromSeed(
           seedColor: Color(0xFFF35F3B),
           primary: Color(0xFFF35F3B),
+          secondary: Color(0xFFF47857),
+          tertiary: Color(0xFF26BDB9),
           primaryContainer: Color(0xFFFFF5F2),
         ),
         textTheme: GoogleFonts.montserratTextTheme(),

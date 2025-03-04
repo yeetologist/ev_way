@@ -46,10 +46,9 @@ class ProfileView extends GetView<ProfileController> {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
                   'Data Diri Pengguna',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                 ),
               ),
               PersonalInfoCard(
@@ -65,10 +64,9 @@ class ProfileView extends GetView<ProfileController> {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
                   'Pengaturan',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontSize: Theme.of(context).textTheme.titleLarge!.fontSize,
-                  ),
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                 ),
               ),
               SettingsButton(

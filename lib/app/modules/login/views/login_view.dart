@@ -11,7 +11,8 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF15A38), // Orange background
+      backgroundColor:
+          Theme.of(context).colorScheme.primary, // Orange background
       body: Stack(children: [
         ConcentricCirclesBackground(),
         Column(
@@ -40,33 +41,30 @@ class LoginView extends GetView<LoginController> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       // Login Title
-                      const Text(
+                      Text(
                         'Masuk',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFFF15A38),
-                        ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                       const SizedBox(height: 8),
-
                       // Subtitle
-                      const Text(
+                      Text(
                         'Masuk dengan akun yang telah didaftarkan.',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 32),
 
                       // Username Field Label
-                      const Text(
+                      Text(
                         'Nama',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFFF15A38),
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                       ),
                       const SizedBox(height: 8),
 
@@ -75,10 +73,10 @@ class LoginView extends GetView<LoginController> {
                         controller: controller.usernameController,
                         decoration: InputDecoration(
                           hintText: 'Masukkan nama pengguna',
-                          hintStyle: TextStyle(
-                            color: Colors.grey.withValues(alpha: 0.5),
-                            fontSize: 14,
-                          ),
+                          hintStyle:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Colors.grey.withValues(alpha: 0.5),
+                                  ),
                           filled: true,
                           fillColor: Colors.grey.withValues(alpha: 0.05),
                           contentPadding: const EdgeInsets.symmetric(
@@ -96,7 +94,9 @@ class LoginView extends GetView<LoginController> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: const Color(0xFFF15A38)
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primary
                                   .withValues(alpha: 0.3),
                             ),
                           ),
@@ -105,12 +105,11 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(height: 24),
 
                       // Password Field Label
-                      const Text(
+                      Text(
                         'Password',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFFF15A38),
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                       ),
                       const SizedBox(height: 8),
 
@@ -121,10 +120,12 @@ class LoginView extends GetView<LoginController> {
                           obscureText: !controller.isPasswordVisible.value,
                           decoration: InputDecoration(
                             hintText: 'Masukkan password',
-                            hintStyle: TextStyle(
-                              color: Colors.grey.withValues(alpha: 0.5),
-                              fontSize: 14,
-                            ),
+                            hintStyle: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Colors.grey.withValues(alpha: 0.5),
+                                ),
                             filled: true,
                             fillColor: Colors.grey.withValues(alpha: 0.05),
                             contentPadding: const EdgeInsets.symmetric(
@@ -142,7 +143,9 @@ class LoginView extends GetView<LoginController> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide(
-                                color: const Color(0xFFF15A38)
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primary
                                     .withValues(alpha: 0.3),
                               ),
                             ),
@@ -173,13 +176,14 @@ class LoginView extends GetView<LoginController> {
                             ),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
-                          child: const Text(
+                          child: Text(
                             'Lupa Password?',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFFF15A38),
-                              fontWeight: FontWeight.w400,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                           ),
                         ),
                       ),
@@ -213,12 +217,17 @@ class LoginView extends GetView<LoginController> {
                                       strokeWidth: 2,
                                     ),
                                   )
-                                : const Text(
+                                : Text(
                                     'Masuk',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onPrimary,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                   ),
                           ),
                         ),
@@ -230,22 +239,26 @@ class LoginView extends GetView<LoginController> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
+                            Text(
                               'Belum punya akun? ',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                    color: Colors.grey,
+                                  ),
                             ),
                             GestureDetector(
                               onTap: controller.register,
-                              child: const Text(
+                              child: Text(
                                 'Daftar',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color(0xFF26BDB9),
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      color: Color(0xFF26BDB9),
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                             ),
                           ],

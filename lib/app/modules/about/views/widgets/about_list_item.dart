@@ -4,21 +4,17 @@ class AboutListItem extends StatelessWidget {
   final String title;
   final IconData icon;
   final VoidCallback onTap;
-  final bool hasBorder;
   final Color iconColor;
   final Color arrowColor;
-  final Color backgroundColor;
 
   const AboutListItem({
     super.key,
     required this.title,
     required this.icon,
     required this.onTap,
-    this.hasBorder = false,
     this.iconColor = const Color(0xFF26BDB9), // Teal color for the icons
     this.arrowColor =
         const Color(0xFF26BDB9), // Teal color for the arrow button
-    this.backgroundColor = const Color(0xFFFFF5F5), // Light pink background
   });
 
   @override
@@ -26,11 +22,8 @@ class AboutListItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(8.0),
-        border: hasBorder
-            ? Border.all(color: const Color(0xFF26BDB9), width: 1.0)
-            : null,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
@@ -63,12 +56,7 @@ class AboutListItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: TextStyle(
-                      fontSize:
-                          Theme.of(context).textTheme.titleLarge!.fontSize,
-                      color: Color(0xFF667085), // Slate gray color
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
 

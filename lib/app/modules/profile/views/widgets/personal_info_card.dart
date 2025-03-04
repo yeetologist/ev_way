@@ -38,24 +38,28 @@ class PersonalInfoCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildInfoRow('Nama Lengkap', name),
+            _buildInfoRow('Nama Lengkap', name, context),
             _buildDivider(),
-            _buildInfoRow('Nomor HP', phoneNumber),
+            _buildInfoRow('Nomor HP', phoneNumber, context),
             _buildDivider(),
-            _buildInfoRow('Umur', age),
+            _buildInfoRow('Umur', age, context),
             _buildDivider(),
-            _buildInfoRow('Tanggal Lahir', birthDate),
+            _buildInfoRow('Tanggal Lahir', birthDate, context),
             _buildDivider(),
-            _buildInfoRow('Jenis Kelamin', gender),
+            _buildInfoRow('Jenis Kelamin', gender, context),
             _buildDivider(),
-            _buildInfoRow('Alamat', address),
+            _buildInfoRow('Alamat', address, context),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildInfoRow(String label, String value) {
+  Widget _buildInfoRow(
+    String label,
+    String value,
+    BuildContext context,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
@@ -63,20 +67,12 @@ class PersonalInfoCard extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Color(0xFF6A7B9C), // Slate blue-gray color
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
           const SizedBox(height: 4),
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 18,
-              color: Color(0xFF6A7B9C),
-            ),
-          ),
+          Text(value, style: Theme.of(context).textTheme.bodyLarge),
         ],
       ),
     );

@@ -43,22 +43,25 @@ class WelcomeView extends GetView<WelcomeController> {
                     child: Column(
                       children: [
                         // Welcome text
-                        const Text(
+                        Text(
                           'Selamat Datang!',
-                          style: TextStyle(
-                            color: Color(0xFFF15A38),
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                         const SizedBox(height: 8),
-                        const Text(
+                        Text(
                           'Selamatkan Hidupmu, Evakuasi dengan Aman',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xFF5B6B8C),
-                            fontSize: 16,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                         const SizedBox(height: 24),
 
@@ -71,7 +74,8 @@ class WelcomeView extends GetView<WelcomeController> {
                               Get.toNamed(Routes.login);
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFF26BDB9),
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.tertiary,
                               foregroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
@@ -79,12 +83,16 @@ class WelcomeView extends GetView<WelcomeController> {
                               ),
                               elevation: 0,
                             ),
-                            child: const Text(
+                            child: Text(
                               'Masuk',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                           ),
                         ),
@@ -100,9 +108,10 @@ class WelcomeView extends GetView<WelcomeController> {
                               Get.toNamed(Routes.register);
                             },
                             style: OutlinedButton.styleFrom(
-                              foregroundColor: const Color(0xFF26BDB9),
-                              side: const BorderSide(
-                                color: Color(0xFF26BDB9),
+                              foregroundColor:
+                                  Theme.of(context).colorScheme.tertiary,
+                              side: BorderSide(
+                                color: Theme.of(context).colorScheme.tertiary,
                                 width: 1,
                               ),
                               padding: const EdgeInsets.symmetric(vertical: 16),
@@ -110,12 +119,16 @@ class WelcomeView extends GetView<WelcomeController> {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                             ),
-                            child: const Text(
+                            child: Text(
                               'Daftar',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.tertiary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                           ),
                         ),
