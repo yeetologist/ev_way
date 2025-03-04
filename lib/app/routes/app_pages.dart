@@ -24,51 +24,51 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.WELCOME;
+  static const initial = Routes.welcome;
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
+      name: _Paths.home,
       page: () => const HomeView(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.LANDING,
+      name: _Paths.landing,
       page: () => LandingView(),
       binding: LandingBinding(),
     ),
     GetPage(
-      name: _Paths.DISASTER,
+      name: _Paths.disaster,
       page: () => const DisasterView(),
       binding: DisasterBinding(),
     ),
     GetPage(
-      name: _Paths.EVACUATION,
+      name: _Paths.evacuation,
       page: () => const EvacuationView(),
       binding: EvacuationBinding(),
     ),
     GetPage(
-      name: _Paths.ABOUT,
+      name: _Paths.about,
       page: () => const AboutView(),
       binding: AboutBinding(),
     ),
     GetPage(
-      name: _Paths.PROFILE,
+      name: _Paths.profile,
       page: () => const ProfileView(),
       binding: ProfileBinding(),
     ),
     GetPage(
-      name: _Paths.WELCOME,
+      name: _Paths.welcome,
       page: () => const WelcomeView(),
       binding: WelcomeBinding(),
     ),
     GetPage(
-      name: _Paths.LOGIN,
+      name: _Paths.login,
       page: () => const LoginView(),
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.REGISTER,
+      name: _Paths.register,
       page: () => const RegisterView(),
       binding: RegisterBinding(),
     ),

@@ -13,7 +13,7 @@ import '../controllers/landing_controller.dart';
 class LandingView extends GetView<LandingController> {
   LandingView({super.key});
   final TextStyle unselectedLabelStyle = TextStyle(
-      color: Colors.white.withOpacity(0.5),
+      color: Colors.white.withValues(alpha: 0.5),
       fontWeight: FontWeight.w500,
       fontSize: 12);
 

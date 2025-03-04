@@ -31,7 +31,7 @@ class LoginView extends GetView<LoginController> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.95),
+                    color: Colors.white.withValues(alpha: 0.95),
                     borderRadius: BorderRadius.circular(24.0),
                   ),
                   padding: const EdgeInsets.all(24.0),
@@ -76,11 +76,11 @@ class LoginView extends GetView<LoginController> {
                         decoration: InputDecoration(
                           hintText: 'Masukkan nama pengguna',
                           hintStyle: TextStyle(
-                            color: Colors.grey.withOpacity(0.5),
+                            color: Colors.grey.withValues(alpha: 0.5),
                             fontSize: 14,
                           ),
                           filled: true,
-                          fillColor: Colors.grey.withOpacity(0.05),
+                          fillColor: Colors.grey.withValues(alpha: 0.05),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 16,
                             vertical: 16,
@@ -96,7 +96,8 @@ class LoginView extends GetView<LoginController> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: const Color(0xFFF15A38).withOpacity(0.3),
+                              color: const Color(0xFFF15A38)
+                                  .withValues(alpha: 0.3),
                             ),
                           ),
                         ),
@@ -121,11 +122,11 @@ class LoginView extends GetView<LoginController> {
                           decoration: InputDecoration(
                             hintText: 'Masukkan password',
                             hintStyle: TextStyle(
-                              color: Colors.grey.withOpacity(0.5),
+                              color: Colors.grey.withValues(alpha: 0.5),
                               fontSize: 14,
                             ),
                             filled: true,
-                            fillColor: Colors.grey.withOpacity(0.05),
+                            fillColor: Colors.grey.withValues(alpha: 0.05),
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: 16,
                               vertical: 16,
@@ -141,7 +142,8 @@ class LoginView extends GetView<LoginController> {
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(12),
                               borderSide: BorderSide(
-                                color: const Color(0xFFF15A38).withOpacity(0.3),
+                                color: const Color(0xFFF15A38)
+                                    .withValues(alpha: 0.3),
                               ),
                             ),
                             suffixIcon: IconButton(
@@ -199,8 +201,8 @@ class LoginView extends GetView<LoginController> {
                               ),
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               elevation: 0,
-                              disabledBackgroundColor:
-                                  const Color(0xFF26BDB9).withOpacity(0.6),
+                              disabledBackgroundColor: const Color(0xFF26BDB9)
+                                  .withValues(alpha: 0.6),
                             ),
                             child: controller.isLoading.value
                                 ? const SizedBox(

@@ -115,7 +115,7 @@ class ConcentricCirclesPainter extends CustomPainter {
 
       // Apply opacity if provided
       if (opacities != null) {
-        paint.color = paint.color.withOpacity(opacities![i]);
+        paint.color = paint.color.withValues(alpha: opacities![i]);
       }
 
       // Draw the circle

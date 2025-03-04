@@ -20,7 +20,7 @@ class LoginController extends GetxController {
       Get.snackbar(
         'Error',
         'Please enter both email and password',
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -38,7 +38,7 @@ class LoginController extends GetxController {
 
       if (userCredential.user != null) {
         // Navigate to home screen after successful login
-        Get.offAllNamed(Routes.LANDING);
+        Get.offAllNamed(Routes.landing);
       }
     } on FirebaseAuthException catch (e) {
       // Handle specific Firebase Auth errors
@@ -54,7 +54,7 @@ class LoginController extends GetxController {
       Get.snackbar(
         'Error',
         message,
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -62,7 +62,7 @@ class LoginController extends GetxController {
       Get.snackbar(
         'Error',
         e.toString(),
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -80,7 +80,7 @@ class LoginController extends GetxController {
       Get.snackbar(
         'Error',
         'Please enter your email address',
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -92,7 +92,7 @@ class LoginController extends GetxController {
       Get.snackbar(
         'Success',
         'Password reset email sent',
-        backgroundColor: Colors.green.withOpacity(0.1),
+        backgroundColor: Colors.green.withValues(alpha: 0.1),
         colorText: Colors.green,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -100,7 +100,7 @@ class LoginController extends GetxController {
       Get.snackbar(
         'Error',
         e.toString(),
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -109,7 +109,7 @@ class LoginController extends GetxController {
 
   void register() {
     // Navigate to registration screen
-    Get.toNamed(Routes.REGISTER);
+    Get.toNamed(Routes.register);
   }
 
   @override

@@ -123,7 +123,6 @@ class WeatherService extends GetConnect {
             noonForecasts.add(forecastAtNoon);
           } catch (e) {
             // If no forecast is available at noon for this group, skip it.
-            print('No forecast at 12:00:00Z found in one group: $e');
           }
         }
 

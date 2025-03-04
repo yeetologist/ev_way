@@ -36,7 +36,7 @@ Future<void> main() async {
       //   Get.put(AuthController());
       // }),
       initialRoute:
-          authController.isLoggedIn.value ? Routes.LANDING : Routes.WELCOME,
+          authController.isLoggedIn.value ? Routes.landing : Routes.welcome,
       getPages: AppPages.routes,
     ),
   );
@@ -59,12 +59,10 @@ class AuthController extends GetxController {
 
     isLoggedIn.value = _auth.currentUser != null;
 
-    print(_auth.currentUser.toString());
-
     // Get.snackbar(
     //   'Error',
     //   'Harap login terlebih dahulu',
-    //   backgroundColor: Colors.red.withOpacity(0.1),
+    //   backgroundColor: Colors.red.withValues(alpha:0.1),
     //   colorText: Colors.red,
     //   snackPosition: SnackPosition.BOTTOM,
     // );

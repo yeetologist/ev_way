@@ -97,7 +97,7 @@ class RegisterController extends GetxController {
       Get.snackbar(
         'Error',
         'Please complete the form correctly',
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -129,13 +129,13 @@ class RegisterController extends GetxController {
         Get.snackbar(
           'Success',
           'Registration successful! Please verify your email.',
-          backgroundColor: Colors.green.withOpacity(0.1),
+          backgroundColor: Colors.green.withValues(alpha: 0.1),
           colorText: Colors.green,
           snackPosition: SnackPosition.BOTTOM,
         );
 
         // Navigate to login screen
-        Get.offNamed(Routes.LOGIN);
+        Get.offNamed(Routes.login);
       }
     } on FirebaseAuthException catch (e) {
       // Handle specific Firebase Auth errors
@@ -151,7 +151,7 @@ class RegisterController extends GetxController {
       Get.snackbar(
         'Error',
         message,
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -159,7 +159,7 @@ class RegisterController extends GetxController {
       Get.snackbar(
         'Error',
         e.toString(),
-        backgroundColor: Colors.red.withOpacity(0.1),
+        backgroundColor: Colors.red.withValues(alpha: 0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
       );
@@ -170,7 +170,7 @@ class RegisterController extends GetxController {
 
   void navigateToLogin() {
     // Navigate to login screen
-    Get.toNamed(Routes.LOGIN);
+    Get.toNamed(Routes.login);
   }
 
   @override

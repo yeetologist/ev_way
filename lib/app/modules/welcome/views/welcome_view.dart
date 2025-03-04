@@ -68,7 +68,7 @@ class WelcomeView extends GetView<WelcomeController> {
                           child: ElevatedButton(
                             onPressed: () {
                               // Navigate to login page
-                              Get.toNamed(Routes.LOGIN);
+                              Get.toNamed(Routes.login);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF26BDB9),
@@ -97,7 +97,7 @@ class WelcomeView extends GetView<WelcomeController> {
                           child: OutlinedButton(
                             onPressed: () {
                               // Navigate to register page
-                              Get.toNamed(Routes.REGISTER);
+                              Get.toNamed(Routes.register);
                             },
                             style: OutlinedButton.styleFrom(
                               foregroundColor: const Color(0xFF26BDB9),

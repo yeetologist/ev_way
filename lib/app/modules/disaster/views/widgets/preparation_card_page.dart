@@ -60,7 +60,7 @@ class PreparationTipItem extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: const Color(0xFFF76C5E).withOpacity(0.1),
+                color: const Color(0xFFF76C5E).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Icon(
