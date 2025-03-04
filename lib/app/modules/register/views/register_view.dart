@@ -150,7 +150,8 @@ class RegisterView extends GetView<RegisterController> {
                             () => SizedBox(
                               width: double.infinity,
                               child: ElevatedButton(
-                                onPressed: controller.isLoading.value
+                                onPressed: controller.isLoading.value ||
+                                        !controller.agreeToTerms.value
                                     ? null
                                     : controller.register,
                                 style: ElevatedButton.styleFrom(

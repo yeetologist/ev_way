@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "81403085506",
+    "project_id": "evway-2a2b4",
+    "storage_bucket": "evway-2a2b4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81403085506:android:6f9b5ae1e17c7e2eb5b15b",
+        "android_client_info": {
+          "package_name": "com.evway.evway.ev_way"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHV6LaMN82Z4iQigStneD1HCxMqhPMXzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

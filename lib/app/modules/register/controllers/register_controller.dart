@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ev_way/app/routes/app_pages.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final usernameController = TextEditingController();
   final phoneController = TextEditingController();
   final emailController = TextEditingController();
@@ -88,11 +92,11 @@ class RegisterController extends GetxController {
         agreeToTerms.value;
   }
 
-  void register() async {
+  Future<void> register() async {
     if (!validateForm()) {
       Get.snackbar(
         'Error',
-        'Harap lengkapi form dengan benar',
+        'Please complete the form correctly',
         backgroundColor: Colors.red.withOpacity(0.1),
         colorText: Colors.red,
         snackPosition: SnackPosition.BOTTOM,
@@ -102,25 +106,66 @@ class RegisterController extends GetxController {
 
     isLoading.value = true;
 
-    // Simulate API call with delay
-    await Future.delayed(const Duration(seconds: 2));
+    try {
+      // Create user with email and password
+      UserCredential userCredential =
+          await _auth.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text,
+      );
 
-    // Add your actual registration logic here
-    // For example: authService.register(username, email, password)
+      // Store additional user information in Firestore
+      if (userCredential.user != null) {
+        await _firestore.collection('users').doc(userCredential.user!.uid).set({
+          'username': usernameController.text,
+          'phone': phoneController.text,
+          'email': emailController.text,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+
+        // Send email verification
+        // await userCredential.user!.sendEmailVerification();
+
+        Get.snackbar(
+          'Success',
+          'Registration successful! Please verify your email.',
+          backgroundColor: Colors.green.withOpacity(0.1),
+          colorText: Colors.green,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+
+        // Navigate to login screen
+        Get.offNamed(Routes.LOGIN);
+      }
+    } on FirebaseAuthException catch (e) {
+      // Handle specific Firebase Auth errors
+      String message = 'Registration failed';
+      if (e.code == 'weak-password') {
+        message = 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        message = 'An account already exists for this email.';
+      } else if (e.code == 'invalid-email') {
+        message = 'The email address is not valid.';
+      }
+
+      Get.snackbar(
+        'Error',
+        message,
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        backgroundColor: Colors.red.withOpacity(0.1),
+        colorText: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
 
     isLoading.value = false;
-
-    // Navigate to verification or login screen after successful registration
-    Get.snackbar(
-      'Sukses',
-      'Registrasi berhasil! Silahkan login',
-      backgroundColor: Colors.green.withOpacity(0.1),
-      colorText: Colors.green,
-      snackPosition: SnackPosition.BOTTOM,
-    );
-
-    // Go to login screen
-    // Get.offNamed('/login');
   }
 
   void navigateToLogin() {
