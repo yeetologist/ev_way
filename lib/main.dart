@@ -1,3 +1,4 @@
+import 'package:ev_way/app/services/location_service.dart';
 import 'package:ev_way/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,10 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize services
+  await Get.putAsync(() => LocationService().init());
+
   final authController = Get.put(AuthController());
   runApp(
     GetMaterialApp(

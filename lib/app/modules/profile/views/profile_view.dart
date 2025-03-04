@@ -15,7 +15,7 @@ class ProfileView extends GetView<ProfileController> {
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         title: Text(
-          'Profile',
+          'Profil',
           style: TextStyle(color: Theme.of(context).colorScheme.primary),
         ),
         centerTitle: true,
